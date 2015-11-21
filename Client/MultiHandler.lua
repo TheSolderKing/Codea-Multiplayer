@@ -2,17 +2,18 @@ MultiHandler = class()
 
 function MultiHandler:init(port)
     -- you can accept and set parameters here
-    self.socket = socket.tcp()
+    self.socket = socket.udp()
     self.port = port
     self.connected = false
-    self.socket:bind('*',self.port)
+    self.socket:setsockname('*',self.port)
     self.ip = self:getIp()
+    self.socket:settimeout(0)
 end
 
 function MultiHandler:connect(ip)
-    self.socket:connect(ip,self.port)
+    self.socket:setpeername(ip,self.port)
+    self.socket:send("connecting")
     self.connected = true
-    self.socket:settimeout(0)
 end
 
 function MultiHandler:getIp()

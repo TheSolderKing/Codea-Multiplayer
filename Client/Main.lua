@@ -3,7 +3,8 @@
 -- Use this function to perform your initial setup
 function setup()
     socket = require("socket")
-    mh = MultiHandler(8000)
+    mh = MultiHandler(8075)
+    mh:connect("192.168.1.115")
     mainText = TextBox(WIDTH/2,HEIGHT/10,3*WIDTH/4,HEIGHT/10)
 end
 
