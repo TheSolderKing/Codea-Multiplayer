@@ -17,8 +17,8 @@ else {
   for(i=0;i<clients.length;i++) {
     var toSend = remote.address + ":" + msg.toString();
     toSend = new Buffer(toSend);
-    server.send(toSend,0,toSend.length,80,clients[i],function(err) {});
+    server.send(toSend,0,toSend.length,8075,clients[i],function(err) {});
   }
 }
 });
-server.bind(80);
+server.bind(8075);
